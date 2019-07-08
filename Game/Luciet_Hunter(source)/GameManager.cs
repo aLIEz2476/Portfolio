@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // ゲームのほとんどを司るコードです。
 
     public PlayerCtrl playerCtrl; public SpwanManager spwanManager;
     public static GameManager instance = null; float cnt_Time;
-    public enum GameDifficult { EASY, SOSO, HARD, FXCK }
+    public enum GameDifficult { EASY, SOSO, HARD, HELL }
     public float playerShootRange = 0, playerWeaponDamage = 0;
     public int playerScore = 0;
     public GameDifficult diff; public float enemyRange;
     public PatrolList patrolList;
+    // 今まで作ったクラスを呼びます。
 
     public bool isDead_Boss = false, stg0_end = false, stg1_end = false, stg2_end = false, stg3_end = false;
     public bool isCountDownEnd = false;
+   
+    
     [SerializeField]
     public int stage_num = 0;
     [HideInInspector]
@@ -22,7 +26,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int stg0_enemyCount = 10, stg1_enemyCount = 0, stg2_enemyCount = 0, boss_count = 1;
     float countTime = 5.0f, timeRemaing;
-
+    // ステージの進行状態を呼びます。
     private void Awake()
     {
         DifficultChecker();
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
             playerCtrl.Player1.SetActive(false);
         }
     }
+    // 使用中のキャラクターが死んだ場合、切り替えを不可能にします。
 
     void StageChanger()
     {
@@ -177,6 +182,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(2.0f);
         }
     }
+    // 2秒間隔でモンスターを召喚するコルーチンです。
 
     void SwitchPlayer()
     {
@@ -209,8 +215,9 @@ public class GameManager : MonoBehaviour
                 playerCtrl.Player2.SetActive(false);
             }
         }
-
     }
+    // キャラクターを切り替える関数です。
+    
 
     public void GameWin()
     {
@@ -225,6 +232,7 @@ public class GameManager : MonoBehaviour
         playerCtrl.enabled = false;
         spwanManager.enabled = false;
     }
+    // 勝ち負けを決める関数です。
 
     void DifficultChecker()
     {
@@ -264,7 +272,7 @@ public class GameManager : MonoBehaviour
             playerCtrl.Player1.GetComponent<AttackCtrl>().bulletLot = 20;
             playerCtrl.Player2.GetComponent<AttackCtrl>().bulletLot = 20;
         }
-        if (diff == GameDifficult.FXCK)
+        if (diff == GameDifficult.HELL)
         {
             stg1_enemy = 55;
             stg2_enemy = 45;
@@ -278,5 +286,6 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    // 難易度を決める関数です。
 
 }

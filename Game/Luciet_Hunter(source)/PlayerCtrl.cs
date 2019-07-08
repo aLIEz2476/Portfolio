@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-
+    /*
+    プレイヤーの基本的なコントロールとアニメーションを制御するコードです。
+     */
 
     float rotationY = 0F; float boost_Speed, org_Speed;
 
@@ -15,6 +17,7 @@ public class PlayerCtrl : MonoBehaviour
     public float xSensitivity = 1.0f;
     public float ySensitivity = 1.0f;
     Vector3 xLimit, yLimit, v3;
+    // クリア判定を決める変数とプリンターの移動速度、マウスのセンシティビティを設定します。
 
     [HideInInspector]
     public GameObject sel_Player;
@@ -24,6 +27,7 @@ public class PlayerCtrl : MonoBehaviour
     public Camera cam_Player;
     //public GameObject p1_gun, p2_gun;
     Transform org_cam;
+    // プレイヤーの情報と使用中のキャラクターを呼びます。
 
     int Player_hashMove_F = Animator.StringToHash("PlayerMove_F");
     int Player_hashMove_B = Animator.StringToHash("PlayerMove_B");
@@ -31,7 +35,7 @@ public class PlayerCtrl : MonoBehaviour
     int Player_hashMove_R = Animator.StringToHash("PlayerMove_R");
     int Player_hashJump = Animator.StringToHash("PlayerJump");
     int Player_hashJumpOff = Animator.StringToHash("PlayerJumpOff");
-
+    // アニメーションを設定します。
 
     private void Awake()
     {
@@ -124,9 +128,9 @@ public class PlayerCtrl : MonoBehaviour
     {
 
 
-        // ESC를 누르면 커서 등판
+        // ESCキーを押すとカーソルが出ます。
 
-        //회전하고 싶은 축과 입력축이 반대인 것에 유의
+        
 
 
         if (Input.GetKey(KeyCode.W))
@@ -212,13 +216,6 @@ public class PlayerCtrl : MonoBehaviour
             moveSpeed = org_Speed;
         }
 
-        //if (!Input.anyKey)
-        //{
-        //    for (int i = 0; i < arrow.Length; i++)
-        //    {
-
-        //    }
-        //}
-        // 이동 스크립트
+    
     }
 }

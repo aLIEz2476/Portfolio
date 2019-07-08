@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AttackCtrl : MonoBehaviour
 {
+    /*
+    プレイヤーの攻撃機能を担当するコードです。
+    */
 
     public Camera cam;
     //public GameObject dummyGun;
@@ -14,6 +17,7 @@ public class AttackCtrl : MonoBehaviour
     Ray ray;
     ParticleSystem muzzleFlash;
     PlayerCtrl playerCtrl;
+
 
     // Use this for initialization
     void Start()
@@ -43,6 +47,8 @@ public class AttackCtrl : MonoBehaviour
             Debug.Log(magazine + " / " + initMagazine);
         }
     }
+    // デバッグ用で作った関数です。
+    // 残った銃弾とマガジンを表示します。
 
     void Reload()
     {
