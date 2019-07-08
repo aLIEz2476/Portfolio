@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
     PatrolList patrolList;
     public Type type;
     public State state;
+    // モンスターのタイプと状態を設定します。
+    // それに加えてパトロールリストも呼びます。
 
     public float enemyHp, enemySpeed, enemyDamage, initHp;
     float enemyRange;
@@ -20,12 +22,15 @@ public class EnemyAI : MonoBehaviour
     Animator animator;
     NavMeshAgent naviAgent;
     int[] patrolArr; int patrolArrLength;
+    // モンスターの情報を設定します。
+    
 
     readonly int Enemy_hashMove = Animator.StringToHash("isMove");
     readonly int Enemy_hashDetect = Animator.StringToHash("isDetect");
     readonly int Enemy_hashDead = Animator.StringToHash("isDead");
     readonly int Enemy_hashAttack = Animator.StringToHash("isAttack");
     readonly int Enemy_hashCombo = Animator.StringToHash("isCombo");
+    // アニメーションを切り替えるために読み取り専用変数を宣言します。
 
     // Use this for initialization
     void Awake()
@@ -97,6 +102,8 @@ public class EnemyAI : MonoBehaviour
             GameManager.instance.GameWin();
         }
     }
+    // モンスターの死亡をチェックします。
+    // 該当するモンスターを殺したプレイヤーの点数が上がります。
 
     void BossComboChecker(float dist)
     {
@@ -109,6 +116,7 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool(Enemy_hashCombo, false);
         }
     }
+    // ボスモンスターのコンボ動作を設定します。
 
     void EnemyTypeSelecter()
     {
@@ -147,6 +155,7 @@ public class EnemyAI : MonoBehaviour
             enemyDamage *= 1.5f;
         }
     }
+    // モンスターの体力とダメージとスピードを決めます。
 
     void EnemyAttack(GameObject Target)
     {
@@ -162,6 +171,7 @@ public class EnemyAI : MonoBehaviour
         enemySpeed = enemyTraceSpeed;
         animator.SetBool(Enemy_hashDetect, true);
     }
+    // モンスターがプレイヤーを見つけた時、追跡を行います。
 
     void EnemyPatroler()
     {
@@ -176,6 +186,8 @@ public class EnemyAI : MonoBehaviour
         patrolCount++;
 
     }
+    // パトロールコードです。
+    // 全ての座標を通った場合、新しい座標リストを作ってパトロールします。
 
     int[] PatrolRandomMaker()
     {
@@ -228,4 +240,5 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+    // プレイヤーの位置によってモンスターの状態を設定します。
 }
