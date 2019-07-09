@@ -17,7 +17,7 @@ public class PlayerCtrl : MonoBehaviour
     public float xSensitivity = 1.0f;
     public float ySensitivity = 1.0f;
     Vector3 xLimit, yLimit, v3;
-    // クリア判定を決める変数とプリンターの移動速度、マウスのセンシティビティを設定します。
+    // クリア判定を決める変数とプレイヤーの移動速度、マウスのセンシティビティを設定します。
 
     [HideInInspector]
     public GameObject sel_Player;
